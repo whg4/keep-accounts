@@ -4,6 +4,16 @@
 
 一款使用 SwiftUI 构建的 iOS 个人记账应用，支持收支记录、预算管理、统计分析和 iCloud 云同步。
 
+## 截图预览
+
+| 账单首页 | 记一笔 | 统计分析 | 预算管理 |
+|:---:|:---:|:---:|:---:|
+| ![账单首页](screenshots/home.png) | ![记一笔](screenshots/add_transaction.png) | ![统计分析](screenshots/statistics.png) | ![预算管理](screenshots/budget.png) |
+
+| 设置 | 搜索 | 分类管理 | 标签管理 |
+|:---:|:---:|:---:|:---:|
+| ![设置](screenshots/settings.png) | ![搜索](screenshots/search.png) | ![分类管理](screenshots/category_manage.png) | ![标签管理](screenshots/tag_manage.png) |
+
 ## 功能特性
 
 ### 💰 收支记录

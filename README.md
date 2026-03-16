@@ -4,6 +4,16 @@
 
 An iOS personal finance app built with SwiftUI, supporting income/expense tracking, budget management, statistical analysis, and iCloud sync.
 
+## Screenshots
+
+| Home | Add Transaction | Statistics | Budget |
+|:---:|:---:|:---:|:---:|
+| ![Home](screenshots/home.png) | ![Add Transaction](screenshots/add_transaction.png) | ![Statistics](screenshots/statistics.png) | ![Budget](screenshots/budget.png) |
+
+| Settings | Search | Category Management | Tag Management |
+|:---:|:---:|:---:|:---:|
+| ![Settings](screenshots/settings.png) | ![Search](screenshots/search.png) | ![Category Management](screenshots/category_manage.png) | ![Tag Management](screenshots/tag_manage.png) |
+
 ## Features
 
 ### 💰 Transaction Management
