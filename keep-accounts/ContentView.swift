@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("appLanguage") private var appLanguage: String = ""
+
     var body: some View {
         MainTabView()
+            .environment(\.locale, appLanguage.isEmpty ? .current : Locale(identifier: appLanguage))
     }
 }
 

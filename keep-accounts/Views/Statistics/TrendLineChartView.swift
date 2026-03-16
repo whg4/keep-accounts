@@ -8,9 +8,17 @@ struct TrendLineChartView: View {
     @State private var chartType: ChartDataType = .expense
 
     enum ChartDataType: String, CaseIterable {
-        case income = "收入"
-        case expense = "支出"
-        case balance = "结余"
+        case income
+        case expense
+        case balance
+
+        var label: String {
+            switch self {
+            case .income: String(localized: "收入")
+            case .expense: String(localized: "支出")
+            case .balance: String(localized: "结余")
+            }
+        }
     }
 
     private struct DailyData: Identifiable {
@@ -38,7 +46,7 @@ struct TrendLineChartView: View {
                 Spacer()
                 Picker("", selection: $chartType) {
                     ForEach(ChartDataType.allCases, id: \.self) { t in
-                        Text(t.rawValue).tag(t)
+                        Text(t.label).tag(t)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -126,7 +134,7 @@ struct TrendLineChartView: View {
             let income = dayTransactions.filter { $0.type == .income }.reduce(Decimal.zero) { $0 + $1.amount }
             let expense = dayTransactions.filter { $0.type == .expense }.reduce(Decimal.zero) { $0 + $1.amount }
 
-            return DailyData(id: day, label: "\(day)日", income: income, expense: expense)
+            return DailyData(id: day, label: "\(day)", income: income, expense: expense)
         }
     }
 
@@ -135,7 +143,7 @@ struct TrendLineChartView: View {
             let monthTransactions = transactions.filter { $0.date.month == month }
             let income = monthTransactions.filter { $0.type == .income }.reduce(Decimal.zero) { $0 + $1.amount }
             let expense = monthTransactions.filter { $0.type == .expense }.reduce(Decimal.zero) { $0 + $1.amount }
-            return DailyData(id: month, label: "\(month)月", income: income, expense: expense)
+            return DailyData(id: month, label: Calendar.current.shortMonthSymbols[month - 1], income: income, expense: expense)
         }
     }
 }

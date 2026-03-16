@@ -8,8 +8,8 @@ enum TransactionType: String, Codable, CaseIterable, Identifiable {
 
     var label: String {
         switch self {
-        case .income: "收入"
-        case .expense: "支出"
+        case .income: String(localized: "收入")
+        case .expense: String(localized: "支出")
         }
     }
 }

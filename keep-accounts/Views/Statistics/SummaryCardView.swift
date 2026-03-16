@@ -79,7 +79,7 @@ struct SummaryCardView: View {
         .padding(.horizontal)
     }
 
-    private func statItem(title: String, value: String, color: Color) -> some View {
+    private func statItem(title: LocalizedStringKey, value: String, color: Color) -> some View {
         VStack(spacing: 4) {
             Text(title)
                 .font(.caption)

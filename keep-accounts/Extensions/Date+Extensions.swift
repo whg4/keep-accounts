@@ -37,27 +37,18 @@ extension Date {
     }
 
     var shortDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "M月d日"
-        return formatter.string(from: self)
+        self.formatted(.dateTime.month().day())
     }
 
     var monthYearString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年M月"
-        return formatter.string(from: self)
+        self.formatted(.dateTime.year().month())
     }
 
     var yearString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年"
-        return formatter.string(from: self)
+        self.formatted(.dateTime.year())
     }
 
     var dayOfWeekString: String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "zh_CN")
-        formatter.dateFormat = "EEEE"
-        return formatter.string(from: self)
+        self.formatted(.dateTime.weekday(.wide))
     }
 }

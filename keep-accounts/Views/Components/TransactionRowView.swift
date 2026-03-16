@@ -22,7 +22,7 @@ struct TransactionRowView: View {
 
             // Info
             VStack(alignment: .leading, spacing: 2) {
-                Text(transaction.category?.name ?? "未分类")
+                Text(transaction.category?.name ?? String(localized: "未分类"))
                     .font(.subheadline.weight(.medium))
                 if !transaction.note.isEmpty {
                     Text(transaction.note)

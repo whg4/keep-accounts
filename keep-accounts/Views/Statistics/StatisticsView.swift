@@ -9,8 +9,15 @@ struct StatisticsView: View {
     @Query private var allTransactions: [Transaction]
 
     enum TimeScope: String, CaseIterable {
-        case month = "月度"
-        case year = "年度"
+        case month
+        case year
+
+        var label: String {
+            switch self {
+            case .month: String(localized: "月度")
+            case .year: String(localized: "年度")
+            }
+        }
     }
 
     private var filteredTransactions: [Transaction] {
@@ -29,7 +36,7 @@ struct StatisticsView: View {
                     // Scope picker
                     Picker("时间范围", selection: $timeScope) {
                         ForEach(TimeScope.allCases, id: \.self) { s in
-                            Text(s.rawValue).tag(s)
+                            Text(s.label).tag(s)
                         }
                     }
                     .pickerStyle(.segmented)

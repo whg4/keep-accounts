@@ -99,7 +99,7 @@ struct HomeView: View {
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 
-    private func summaryItem(title: String, amount: Decimal, color: Color) -> some View {
+    private func summaryItem(title: LocalizedStringKey, amount: Decimal, color: Color) -> some View {
         VStack(spacing: 4) {
             Text(title)
                 .font(.caption)

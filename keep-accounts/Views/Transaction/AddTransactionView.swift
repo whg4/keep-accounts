@@ -51,7 +51,7 @@ struct AddTransactionView: View {
                 }
                 .padding()
             }
-            .navigationTitle(editingTransaction == nil ? "记一笔" : "编辑")
+            .navigationTitle(editingTransaction == nil ? String(localized: "记一笔") : String(localized: "编辑"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

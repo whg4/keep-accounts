@@ -4,6 +4,7 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var allTransactions: [Transaction]
+    @AppStorage("appLanguage") private var appLanguage: String = ""
 
     @State private var showExportSheet = false
     @State private var csvURL: URL?
@@ -57,6 +58,14 @@ struct SettingsView: View {
                     }
                 }
 
+                Section("语言") {
+                    Picker("语言", selection: $appLanguage) {
+                        Text("跟随系统").tag("")
+                        Text("简体中文").tag("zh-Hans")
+                        Text("English").tag("en")
+                    }
+                }
+
                 Section("关于") {
                     HStack {
                         Text("版本")
@@ -76,7 +85,7 @@ struct SettingsView: View {
     }
 
     private func exportCSV() {
-        var csv = "日期,类型,分类,金额,备注,标签\n"
+        var csv = String(localized: "csv.header") + "\n"
         let sorted = allTransactions.sorted { $0.date > $1.date }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -84,14 +93,14 @@ struct SettingsView: View {
         for t in sorted {
             let dateStr = dateFormatter.string(from: t.date)
             let typeStr = t.type.label
-            let catStr = t.category?.name ?? "未分类"
+            let catStr = t.category?.name ?? String(localized: "未分类")
             let amountStr = t.amount.formattedCurrency
             let noteStr = t.note.replacingOccurrences(of: ",", with: "，")
             let tagStr = t.tags.map(\.name).joined(separator: "|")
             csv += "\(dateStr),\(typeStr),\(catStr),\(amountStr),\(noteStr),\(tagStr)\n"
         }
 
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("记账导出.csv")
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(String(localized: "csv.filename"))
         try? csv.write(to: tempURL, atomically: true, encoding: .utf8)
         csvURL = tempURL
         showExportSheet = true

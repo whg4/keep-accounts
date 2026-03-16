@@ -53,13 +53,13 @@ struct PresetCategories {
 
         for (index, item) in expenseData.enumerated() {
             let parent = Category(
-                name: item.0, icon: item.1, colorHex: item.2,
+                name: String(localized: String.LocalizationValue(item.0)), icon: item.1, colorHex: item.2,
                 type: .expense, isPreset: true, sortOrder: index
             )
             context.insert(parent)
             for (subIndex, sub) in item.3.enumerated() {
                 let child = Category(
-                    name: sub.0, icon: sub.1, colorHex: item.2,
+                    name: String(localized: String.LocalizationValue(sub.0)), icon: sub.1, colorHex: item.2,
                     type: .expense, isPreset: true, sortOrder: subIndex, parent: parent
                 )
                 context.insert(child)
@@ -77,7 +77,7 @@ struct PresetCategories {
 
         for (index, item) in incomeData.enumerated() {
             let cat = Category(
-                name: item.0, icon: item.1, colorHex: item.2,
+                name: String(localized: String.LocalizationValue(item.0)), icon: item.1, colorHex: item.2,
                 type: .income, isPreset: true, sortOrder: index
             )
             context.insert(cat)
