@@ -1,96 +1,92 @@
 # Keep Accounts 记账
 
-一款使用 SwiftUI 构建的 iOS 个人记账应用，支持收支记录、预算管理、统计分析和 iCloud 云同步。
+**English** | [中文](README.zh.md)
 
-## 功能特性
+An iOS personal finance app built with SwiftUI, supporting income/expense tracking, budget management, statistical analysis, and iCloud sync.
 
-### 💰 收支记录
-- 支持收入与支出两种交易类型
-- 金额输入带货币格式化
-- 分类选择（支持父子层级分类）
-- 标签管理，灵活标记交易
-- 日期选择与备注记录
-- 按月份、日期分组展示账单
+## Features
 
-### 📊 统计分析
-- 月度 / 年度多维度统计
-- 饼图展示各分类占比
-- 折线图展示收支趋势
-- 汇总卡片：总收入、总支出、结余、日均支出、最大单笔交易
+### 💰 Transaction Management
+- Support for both income and expense transaction types
+- Amount input with currency formatting
+- Category selection with hierarchical parent/child categories
+- Flexible tag-based transaction labeling
+- Date picker and note/remarks support
+- Transactions grouped by date within a monthly view
 
-### 📋 预算管理
-- 设置月度总预算
-- 按分类设置预算上限
-- 环形进度条可视化预算使用情况
-- 超支预警提示
+### 📊 Statistics & Analytics
+- Monthly and yearly multi-dimensional statistics
+- Pie chart breakdown by category
+- Line chart for income/expense trends
+- Summary card: total income, total expenses, balance, daily average, largest single transaction
 
-### 🔍 搜索与筛选
-- 全文搜索（备注、分类名、标签、金额）
-- 按交易类型、分类、日期范围筛选
+### 📋 Budget Management
+- Set monthly total budget
+- Set per-category budget limits
+- Circular progress ring visualizing budget usage
+- Overspend alert warnings
 
-### 🏷️ 分类与标签
-- 10 个预设支出分类（餐饮、交通、购物、住房等），含子分类
-- 5 个预设收入分类（工资、奖金、投资、兼职等）
-- 自定义分类：20+ 图标、15+ 颜色可选
-- 自定义标签，支持多标签关联
+### 🔍 Search & Filtering
+- Full-text search across notes, category names, tags, and amounts
+- Filter by transaction type, category, and date range
 
-### ⚙️ 设置与数据
-- CSV 导出全部交易记录
-- iCloud 自动云同步
-- 多语言支持（简体中文 / English / 跟随系统）
+### 🏷️ Categories & Tags
+- 10 preset expense categories (Dining, Transport, Shopping, Housing, etc.) with subcategories
+- 5 preset income categories (Salary, Bonus, Investment, Freelance, etc.)
+- Custom categories: 20+ icons and 15+ colors available
+- Custom tags with multi-tag support per transaction
 
-## 技术栈
+### ⚙️ Settings & Data
+- Export all transactions as CSV
+- Automatic iCloud sync
+- Multilingual support (Simplified Chinese / English / Follow System)
 
-| 技术 | 说明 |
-|------|------|
-| SwiftUI | 声明式 UI 框架 |
-| SwiftData | 数据持久化 |
-| CloudKit | iCloud 云同步 |
-| Swift Charts | 图表可视化 |
+## Tech Stack
 
-## 项目结构
+| Technology | Description |
+|------------|-------------|
+| SwiftUI | Declarative UI framework |
+| SwiftData | Data persistence |
+| CloudKit | iCloud sync |
+| Swift Charts | Chart visualization |
+
+## Project Structure
 
 ```
 keep-accounts/
-├── Models/                  # 数据模型
-│   ├── Transaction.swift    # 交易记录
-│   ├── Category.swift       # 分类（支持父子层级）
-│   ├── Budget.swift         # 预算
-│   ├── Tag.swift            # 标签
-│   └── TransactionType.swift # 交易类型枚举
-├── Views/                   # 视图层
-│   ├── MainTabView.swift    # 底部 Tab 导航
-│   ├── Home/                # 首页（账单列表）
-│   ├── Statistics/          # 统计（饼图、折线图、汇总卡片）
-│   ├── Budget/              # 预算（总览与设置）
-│   ├── Search/              # 搜索
-│   ├── Settings/            # 设置
-│   ├── Category/            # 分类管理
-│   ├── Tag/                 # 标签管理
-│   ├── Transaction/         # 添加交易
-│   └── Components/          # 通用组件
-├── Data/                    # 预设数据
+├── Models/                  # Data models
+│   ├── Transaction.swift    # Transaction record
+│   ├── Category.swift       # Category (hierarchical)
+│   ├── Budget.swift         # Budget
+│   ├── Tag.swift            # Tag
+│   └── TransactionType.swift # Transaction type enum
+├── Views/                   # View layer
+│   ├── MainTabView.swift    # Bottom tab navigation
+│   ├── Home/                # Home (transaction list)
+│   ├── Statistics/          # Statistics (pie chart, line chart, summary)
+│   ├── Budget/              # Budget (overview & settings)
+│   ├── Search/              # Search
+│   ├── Settings/            # Settings
+│   ├── Category/            # Category management
+│   ├── Tag/                 # Tag management
+│   ├── Transaction/         # Add transaction
+│   └── Components/          # Shared components
+├── Data/                    # Preset data
 │   └── PresetCategories.swift
-├── Extensions/              # 扩展
+├── Extensions/              # Extensions
 │   ├── Color+Extensions.swift
 │   ├── Date+Extensions.swift
 │   └── Decimal+Extensions.swift
-└── Localizable.xcstrings    # 国际化字符串
+└── Localizable.xcstrings    # Localization strings
 ```
 
-## 应用截图
-
-| 首页 | 统计 | 预算 | 设置 |
-|:----:|:----:|:----:|:----:|
-| 账单 | 图表 | 总览 | 配置 |
-
-## 环境要求
+## Requirements
 
 - Xcode 16+
 - iOS 17+
 - Swift 5.9+
 
-## 构建运行
+## Getting Started
 
 ```bash
 git clone <repo-url>
@@ -98,7 +94,7 @@ cd keep-accounts
 open keep-accounts.xcodeproj
 ```
 
-在 Xcode 中选择目标设备，点击 **Run (⌘R)** 即可运行。
+Select a target device in Xcode and press **Run (⌘R)**.
 
 ## License
 
